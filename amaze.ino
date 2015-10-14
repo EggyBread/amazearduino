@@ -9,6 +9,7 @@
 
 
 #include <Stepper.h>
+#include "math.h"
 
 #define BUFFER_SIZE 500
 
@@ -113,25 +114,34 @@ void loop() {
     }
 }
 
-void line(int xSteps, int ySteps)
+void line(long xSteps, long ySteps)
 {
   Serial.println("Moving " + String(xSteps) + " steps in X and " + String(ySteps) + " steps in Y.");
-  int xProgress = 0,
+  long xProgress = 0,
   yProgress = 0,
   xDifference = 0,
   yDifference = 0;
 
-  int i;
+  long i;
+  long j = 0;
+  Serial.print("j = ");
+  Serial.println(String(j));
+  j = sqrt( (xSteps*xSteps) + (ySteps*ySteps) );
   
-  for (i = 0; i < 10; i++)
+  Serial.print("j = ");
+  Serial.println(String(j));
+
+  j *= 10;
+
+  for (i = 0; i < j; i++)
   {
-    xDifference = (xSteps * i / 10) - xProgress;
-    yDifference = (ySteps * i / 10) - yProgress;
+    xDifference = (xSteps * i / j) - xProgress;
+    yDifference = (ySteps * i / j) - yProgress;
 
     stepperX.step(xDifference);
-    delay(3);
+    delay(1);
     stepperY.step(yDifference);
-    delay(3);
+    delay(1);
     setMotorLow();
 
     xProgress += xDifference;
@@ -150,7 +160,8 @@ void home()
   }
   setMotorLow();
   delay(100);
-  Serial.println("X is 0.");  
+  Serial.println("X is 0.");
+  delay(100);
   path[j].x = 0;
   j++;
   Serial.println("Waiting for release");  
