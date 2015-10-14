@@ -57,7 +57,7 @@ void setup() {
   pinMode(switchY2, INPUT_PULLUP);
   
   Serial.begin(115200);
-
+  Serial.println("Serial Waiting");
   path[j].x = 0;
   j++;
   path[j].y = 0;
