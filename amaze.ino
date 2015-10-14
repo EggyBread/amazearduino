@@ -32,10 +32,10 @@ const int stepsPerRevolution = 200;  // change this to fit the number of steps p
 
 
 // initialize the stepper library on pins 8 through 11:
-Stepper stepperX(stepsPerRevolution, 8, 9, 10, 11);
+Stepper stepperX(stepsPerRevolution, 4, 5, 6, 7);
 
 // initialize the stepper library on pins 4 through 7:
-Stepper stepperY(stepsPerRevolution, 4, 5, 6, 7);
+Stepper stepperY(stepsPerRevolution, 8, 9, 10, 11);
 
 int switchX1 = 22;
 boolean buttonStateX1 = true;   
