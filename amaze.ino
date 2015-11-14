@@ -106,7 +106,7 @@ void loop() {
     {
       int k = 1;
       int steps = 0;
-      for (k = 1; k < path_size; k++)
+      for (k = 1; k <= path_size; k++)
       {
         line(path[k].x - path[k - 1].x, path[k].y - path[k - 1].y);
       }
